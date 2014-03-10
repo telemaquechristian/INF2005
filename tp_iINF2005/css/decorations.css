@@ -1,103 +1,89 @@
-/* http://4.bp.blogspot.com/-GPtJoUvLeEs/TykeaZigrsI/
-AAAAAAAAGE4/ewp3d1i9eq0/s1600/mustberesult-blue-gradient-ipad-wallpaper.jpg */
-.bleuePale{ background-image: url("../img/contenu.jpg");  background-attachment: fixed;}
-.bleueGris{ background-color: #366097;}
-.head
-{
+.bleuePale {
+	background-image: url("../img/contenu.jpg");
+	background-attachment: fixed;
+}
+.bleueGris {
+	background-color: #366097;
+}
+.head {
 	height: 100px;
 	text-align: center;
 	font-size: 26px;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	margin-left: 20px;
 	margin-right: 20px;
 	border-style: double;
 	background-color: rgba(0,0,100,0.1);
-
 }
 
-
-
-.containLeft
-{
+.containLeft {
 	margin-top: 50px;
 	text-align: center;
 	font-size: 16px;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	height: 500px;
-	width: 200px;	
-	float:left;
+	width: 200px;
+	float: left;
 	margin-left: 20px;
 	margin-right: 20px;
 	border-style: double;
 	background-color: rgba(0,0,100,0.1);
-
-
 }
 
-.LeftcontainList
-{
-	background-color:#0D3349;
+.LeftcontainList {
+	background-color: #0D3349;
 	height: auto;
 	margin-left: 5px;
 	margin-right: 5px;
 }
 
-.containCenter
-{
+.containCenter {
 	margin-top: 50px;
 	font-size: 16px;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	height: 500px;
 	width: auto;
 	float: left;
 	border-style: double;
 	background-color: rgba(0,0,100,0.1);
-
 }
 
-.containRight
-{
+.containRight {
 	margin-top: 50px;
-	float:right;
-	margin-right:20px;
+	float: right;
+	margin-right: 20px;
 	font-size: 16px;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	height: 500px;
 	width: 195px;
 	margin-left: 20px;
 	margin-right: 20px;
-	border-style: double;	
+	border-style: double;
 	background-color: rgba(0,0,100,0.1);
 	text-align: center;
 }
 
-.footer
-{
+.footer {
 	margin-top: 600px;
 	height: 150px;
 	font-size: 14px;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	text-align: center;
 	margin-left: 20px;
 	margin-right: 20px;
 	border-style: double;
 	background-color: rgba(0,0,100,0.1);
+}
+.textMargin10PX {
 
 }
-.textMargin10PX
-{
-	
-}
 
-.a:hover
-{
-	color:#C6E746; 
-}    
-a:visited  /* Quand le visiteur clique sur le lien */
-{
-    color: #AAA;
+.a:hover {
+	color: #C6E746;
 }
-a
-{
+a:visited/* Quand le visiteur clique sur le lien */ {
+	color: #AAA;
+}
+a {
 	color: #FFFFFF;
 }
