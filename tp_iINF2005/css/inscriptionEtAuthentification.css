@@ -1,0 +1,70 @@
+.inscriptionEtConnection
+{
+	background-color: #2B81AF;
+	float:left;
+	width: 357px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top:80px;
+	border-style: double;
+	border-radius: 10px;
+	box-shadow: 6px 6px 0px ;
+}
+.inscriptionContain
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom:30px;
+}
+
+.formStyle
+{
+	height: 30px;
+	width: 150px;
+	font-size: 18px;
+	color:#999999;
+}
+
+.formStyleCourriel
+{
+	height: 30px;
+	width: 250px;
+	font-size: 18px;
+	color:#999999;
+}
+
+.headParagraph
+{
+	font-size: 26px;
+}
+
+.buttonGris
+{
+	background-color: #0D3349;
+	color: #D2E0E6;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	font-size: 16px;
+	border-style: double;
+}
+
+.connection
+{
+	height: 30px;
+	width: 150px;
+	font-size: 18px;
+	border: #0000EE;
+}
+
+.buttonConnection
+{
+	background-color: #0D3349;
+	color: #D2E0E6;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	font-size: 16px;
+	border-style: double;
+	float: left;
+}

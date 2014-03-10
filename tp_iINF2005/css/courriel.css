@@ -1,0 +1,39 @@
+.courriel
+{
+	background-color: #2B81AF;
+	width: 630px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top:10px;
+	border-style: double;
+}
+
+.deconnection
+{
+	float: right;
+	font-size: 16px;
+}
+
+.textmessagesize
+{
+	font-size: 16px;
+	height: 210px;
+	width: 585px;
+}
+
+.attribution
+{
+	height:155px; 
+	width: 140px;
+	color:#2B81AF;
+	font-size: 14px;
+}
+
+.listeEtudiant
+{
+	height:155px; 
+	width: 300px;
+	color:#2B81AF;
+	font-size: 14px;
+}
+ 
