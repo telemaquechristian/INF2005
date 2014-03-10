@@ -1,3 +1,16 @@
 .tablecontenu {
 	border: 1px solid #0D3349;
 }
+
+.ressourcesAjouterLien
+{
+	background-color: #2B81AF;
+	float:left;
+	width: 357px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top:20px;
+	border-style: double;
+	border-radius: 10px;
+	box-shadow: 6px 6px 0px ;
+}
