@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title> Attribution des r&ocirc;les </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<link rel="stylesheet" href="css/decorations.css">
+		<link rel="stylesheet" href="css/courriel.css">
+		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+
+		<script>
+			var selOptions = new Array();
+
+			function swap(listFrom, listTo) {
+				fromList = document.getElementsByName(listFrom)[0];
+				toList = document.getElementsByName(listTo)[0];
+				while (fromList.selectedIndex != -1) {
+					addOption(toList, fromList.options[fromList.selectedIndex]);
+					fromList.options.remove(fromList.selectedIndex);
+				}
+			}
+
+			function addOption(list, option) {
+				list.options[list.options.length] = new Option(option.innerHTML, option.value);
+
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="bleuePale">
+
+			<div class ="head">
+				<br />
+				Programmation Web:INF2005
+				<a href="deconection.html" >
+				<div class="deconnection">
+					D&eacute;connection
+				</div></a>
+			</div>
+
+			<div class="containLeft">
+				<br>
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							<a href="Cours_INF2005.html" class ="a"> INF2005</a>
+						</li>
+					</ul>
+				</div>
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							Ressource
+						</li>
+					</ul>
+				</div>
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							Activit&eacute;
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="containCenter">
+
+				<div class="inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							R&ocirc;le
+						</p>
+						<form action="">
+							<input type="checkbox" name="&eacutetudiant" value="&eacutetudiant">
+							&Eacute;tudiant
+							<br>
+							<input type="checkbox" name="d&eacuteonstrateur" value="d&eacuteonstrateur">
+							D&eacute;monstrateur
+						</form>
+
+						<table   style="background-color:#FFFFFF" width="300" >
+							<tr>
+								<td rowspan="2" style=background-color:#bddce6;width:250px;>
+								<select name="listA" id="listA" multiple="multiple" class="attribution">
+									<option value="A">user1</option>
+									<option value="B">user2</option>
+									<option value="C">user3</option>
+									<option value="D">user4</option>
+								</select></td>
+								<td >
+								<button onclick="swap('listA','listB');">
+									&gt;
+								</button></td>
+								<td rowspan="2"  style=background-color:#bddce6;width:250px;>
+								<select name="listB" id="listB" multiple="multiple" class="attribution">
+									<option value="E">user5</option>
+									<option value="F">user6</option>
+									<option value="G">user7</option>
+									<option value="H">user8</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td >
+								<button onclick="swap('listB','listA');">
+									&lt;
+								</button></td>
+							</tr>
+						</table>
+
+					</div>
+				</div>
+
+				<div class = "inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							Vide
+						</p>
+						vide
+					</div>
+				</div>
+
+			</div>
+
+			<div class="containRight">
+				<br>
+				<div class="LeftcontainList">
+					vide
+				</div>
+				<br>
+				<div class="LeftcontainList">
+					vide
+				</div>
+			</div>
+
+			<div class="footer">
+
+			</div>
+
+		</div>
+	</body>
+</html>
