@@ -1,46 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
 
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Devoir</title>
+		<title> Devoir </title>
 		<meta name="description" content="">
-		<meta name="author" content="Christian Télémaque">
+		<meta name="author" content="">
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="stylesheet" href="css/decorations.css">
+		<link rel="stylesheet" href="css/courriel.css">
+		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+		<link rel="stylesheet" href="css/ressource.css">
+		<link rel="stylesheet" href="css/gererSection.css">
+		<link rel="stylesheet" href="css/menuDynamique.css">
+
 	</head>
 
 	<body>
-		<div>
-			<header>
-				<h1>Devoir</h1>
-			</header>
-			<nav>
-				<p>
-					<a href="/">Home</a>
-				</p>
-				<p>
-					<a href="/contact">Contact</a>
-				</p>
-			</nav>
 
-			<div>
+		<div class="bleuePale">
+
+			<div class ="head">
+
+				<nav>
+					<a href="Accueil.html" class="accueil">Accueil</a>
+				</nav>
+				<h1>Programmation Web : INF2005</h1>
+				<a href="deconection.html" class="deco">D&eacute;connection</a>
 
 			</div>
 
-			<footer>
-				<p>
-					&copy; Copyright  by Christian Télémaque
-				</p>
-			</footer>
+			<div class="containLeft">
+				<div class = "LeftcontainList">
+
+				</div>
+			</div>
+
+			<div class="containCenterGestionSection">
+				
+
+				<div class = "inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							Ajouter un devoir
+						</p>
+						<form action="">
+							Sélectionner un fichier
+							<br>
+							<input type="file" name="fichier" >
+							<br>
+
+							<input type="submit" value="Soumettre">
+						</form>
+
+					</div>
+				</div>
+				<br>
+				
+
+			</div>
+
+			<div class="containRight">
+				<br>
+				<div class="LeftcontainList">
+					<a href="courriel.html" class="a">Envoyer un courriel au groupe via le forum</a>
+				</div>
+				<br>
+				<div class="LeftcontainList">
+					<a href="mailto:christiantelemaque@gmail.com" class="a">Envoyer un courriel</a>
+				</div>
+				<br>
+				<div class="LeftcontainList">
+					<a href="Sections.html" class="a">S&eacute;ctions</a>
+				</div>
+				<br>
+			</div>
+
+			<div class="footer">
+
+			</div>
+
 		</div>
 	</body>
 </html>

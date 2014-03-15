@@ -7,13 +7,29 @@
 }
 .head {
 	height: 100px;
-	text-align: center;
-	font-size: 26px;
 	color: #FFFFFF;
 	margin-left: 20px;
 	margin-right: 20px;
 	border-style: double;
 	background-color: rgba(0,0,100,0.1);
+}
+
+h1 {
+	display: inline-block;
+	width: 500px;
+}
+
+nav {
+    display: inline-block;
+    margin-left: 20px;
+    width: 200px;
+    text-transform: uppercase;
+}
+
+.deco {
+	display: inline-block;
+	width: 400px;
+	text-align: right;
 }
 
 .containLeft {
