@@ -13,10 +13,9 @@
 
 		<link rel="stylesheet" href="css/decorations.css">
 		<link rel="stylesheet" href="css/courriel.css">
-		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+		<link rel="stylesheet" href="css/ajouter.css">
 		<link rel="stylesheet" href="css/ressource.css">
-		<link rel="stylesheet" href="css/gererSection.css">
-		<link rel="stylesheet" href="css/menuDynamique.css">
+		<link rel="stylesheet" href="css/OneCenter.css">
 
 	</head>
 
@@ -35,33 +34,45 @@
 			</div>
 
 			<div class="containLeft">
-				<div class = "LeftcontainList">
 
-				</div>
 			</div>
 
-			<div class="containCenterGestionSection">
-				
+			<div class="containCenter">
 
-				<div class = "inscriptionEtConnection">
+				<div class="inscriptionEtConnection">
 					<div class="inscriptionContain">
 						<p class="headParagraph">
-							Ajouter un devoir
+							Devoir
 						</p>
-						<form action="">
-							Sélectionner un fichier
-							<br>
-							<input type="file" name="fichier" >
-							<br>
-
-							<input type="submit" value="Soumettre">
+						<form action="GestionSections.html">
+							<p>
+								<label>Titre</label> :
+								<input type="text" name="titre" />
+							</p>
+							<p>
+								<label for="description">Description :</label>
+								<br />
+								<textarea name="description" id="description" rows="4" cols="40"></textarea>
+							</p>
+							<p>
+								<label>Note maximale</label> :
+								<input type="number" max="100" min="0"/>
+							</p>
+							<p>
+								<label>Date de disponibilit&eacute;</label> :
+								<input type="date" />
+							</p>
+							<p>
+								<label>Date de remise</label> :
+								<input type="date" />
+							</p>
+							<p>
+								<input type="file" name="fichier" >
+							</p>
+							<input class = "buttonOK" type="submit"  value="OK">
 						</form>
-
 					</div>
 				</div>
-				<br>
-				
-
 			</div>
 
 			<div class="containRight">
@@ -78,6 +89,7 @@
 					<a href="Sections.html" class="a">S&eacute;ctions</a>
 				</div>
 				<br>
+
 			</div>
 
 			<div class="footer">
