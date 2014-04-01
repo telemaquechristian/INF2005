@@ -1,0 +1,47 @@
+.inscriptionEtConnection {
+	background-color: #2B81AF;
+	float: left;
+	width: 735px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	border-style: double;
+	border-radius: 10px;
+	box-shadow: 6px 6px 0px;
+}
+
+.inscriptionContain {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+}
+
+.formStyle {
+	height: 30px;
+	width: 150px;
+	font-size: 18px;
+	color: #999999;
+}
+
+.formStyleCourriel {
+	height: 30px;
+	width: 250px;
+	font-size: 18px;
+	color: #999999;
+}
+
+.headParagraph {
+	font-size: 26px;
+}
+
+.containCenter {
+	margin-top: 50px;
+	font-size: 16px;
+	color: #FFFFFF;
+	height: 500px;
+	width: 770px;
+	float: left;
+	border-style: double;
+	background-color: rgba(0,0,100,0.1);
+}

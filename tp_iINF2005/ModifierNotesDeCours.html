@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title> Modifier notes de cours </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<link rel="stylesheet" href="css/decorations.css">
+		<link rel="stylesheet" href="css/courriel.css">
+		<link rel="stylesheet" href="css/ressource.css">
+		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+		<link rel="stylesheet" href="css/menuDynamique.css">
+		<link rel="stylesheet" href="css/modifier.css">
+
+	</head>
+
+	<body>
+
+		<div class="bleuePale">
+
+			<div class ="head">
+
+				<nav>
+					<a href="Accueil.html" class="accueil">Accueil</a>
+				</nav>
+				<h1>Programmation Web : INF2005</h1>
+				<a href="deconection.html" class="deco">D&eacute;connection</a>
+
+			</div>
+
+			<div class="containLeft">
+
+			</div>
+
+			<div class="containCenter">
+
+				<div class="inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							Modifier s&eacute;ction :
+							<br />
+							Notes de cours
+						</p>
+						<form action="GestionSections.html">
+							<p>
+								<label>Titre</label> :
+								<input type="text" name="titre" />
+							</p>
+							<p>
+								<label for="description">Description :</label>
+								<br />
+								<textarea name="description" id="description" rows="10" cols="30"></textarea>
+							</p>
+
+							<input class = "button" type="submit"  value="OK">
+						</form>
+					</div>
+				</div>
+
+				<div class = "inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<div id="menu_dynamique">
+							<p class="headParagraph">
+								Resources
+							</p>
+							<ul>
+
+								<li class="extend first">
+									<a href="#">S&eacute;ance 1</a>
+									<ul>
+										<li class="end first">
+											<a href="Ressource.html">Modifier</a>
+										</li>
+										<li class="end last">
+											<a href="#">Supprimer</a>
+										</li>
+									</ul>
+								</li>
+								<li class="extend last">
+									<a href="#">S&eacute;ance 2</a>
+									<ul>
+										<li class="end first">
+											<a href="Ressource.html">Modifier</a>
+										</li>
+										<li class="end last">
+											<a href="#">Supprimer</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<form action="Ressource.html">
+							<input class = "button" type="submit"  value="Ajouter resource">
+						</form>
+						<div id="menu_dynamique">
+							<p class="headParagraph">
+								Activit&eacute;s
+							</p>
+
+						</div>
+						<form action="Devoir.html">
+							<input class = "button" type="submit"  value="Ajouter activit&eacute;">
+						</form>
+					</div>
+				</div>
+
+				<div class="retour">
+					<a href="GestionSections.html">Retour</a>
+				</div>
+
+			</div>
+
+			<div class="containRight">
+				<br>
+				<div class="LeftcontainList">
+					<a href="courriel.html" class="a">Envoyer un courriel au groupe via le forum</a>
+				</div>
+				<br>
+				<div class="LeftcontainList">
+					<a href="mailto:christiantelemaque@gmail.com" class="a">Envoyer un courriel</a>
+				</div>
+				<br>
+				<div class="LeftcontainList">
+					<a href="Sections.html" class="a">S&eacute;ctions</a>
+				</div>
+				<br>
+
+			</div>
+
+			<div class="footer">
+
+			</div>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+
+.button {
+	display: inline-block;
+	background-color: #0D3349;
+	color: #D2E0E6;
+	width: 120px;
+	height: 25px;
+	text-align: center;
+	border-style: double;
+}
+
+.retour {
+	display: block;
+	font-size: 20px;
+	margin-top: 460px;
+	margin-left: 10px;
+	width: 120px;
+	text-align: center;
+	background-color: #0D3349;
+	border-style: double;
+}
