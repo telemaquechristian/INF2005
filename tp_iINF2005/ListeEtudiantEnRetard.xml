@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE etudiant[
+<!ELEMENT etudiant (nom, prenom,email)> <!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)> <!ELEMENT email (#PCDATA)>
+]>
+
+
+<Etudiants>
+<etudiant>
+<nom> Sara  </nom> 
+<prenom> Salomon </prenom>
+<email> sara.salomon@courrier.uqam.ca </email>
+</etudiant>
+
+</Etudiants>

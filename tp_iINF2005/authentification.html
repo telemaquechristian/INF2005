@@ -14,15 +14,17 @@
 		<link rel="stylesheet" href="css/decorations.css">
 		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
 
+		<script src="js/authentification.js"></script>
 		<script>
-			
-			
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
 		</script>
-
 	</head>
 
 	<body  >
-<p>OK</p>
+
 		<div class="bleuePale">
 
 			<div class ="head">
@@ -63,18 +65,21 @@
 						<p class="headParagraph">
 							Inscription
 						</p>
-						<form action="authentification.html">
+						<form action="authentification.html" name="inscription">
 							<input class="formStyle" type="text" name="Nom" value="Nom De Famille" autofocus="" >
 							<input class="formStyle" type="text" name="Prenom" value="Pr&#233nom">
 							<br>
 							<br>
-							<input class="formStyleCourriel" type="email" name="Courriel" value="Courriel">
+							<input class="formStyleCourriel" type="email" name="Email" value="Courriel">
 							<br>
 							<br>
 							<input class="formStyleCourriel" type="email" name="Confirmation" value="Confirmer votre courriel">
 							<br>
 							<br>
-							<input class = "buttonGris" type="submit"  value="Inscription">
+							<input class="formStyleCourriel" type="password" name="pwd" value="Mot De Passe">
+							<br>
+							<br>
+							<input class = "buttonGris" type="button"  value="Inscription" onclick="valideInscription()">
 						</form>
 					</div>
 				</div>
@@ -84,17 +89,17 @@
 						<p class="headParagraph">
 							Connection au cours
 						</p>
-						<form action="Accueil.html">
+						<form  name="connection">
 							Code d&#39acc&egrave;s &eacute;tudiant
 							<br>
-							<input class="connection" type="email" name="code d&#39acc&egrave;s">
+							<input class="connection" type="email" name="email">
 							<br>
 							Mot De Passe
 							<br>
-							<input class="connection" type="password" name="pwd" onPaste = "return false;" >
+							<input class="connection" type="password" name="pwd" >
 							<br>
 							<br>
-							<input class="buttonConnection" type="submit" name="connection" value="Connection">
+							<input class="buttonConnection" type="button" value="Connection" onclick="accueil()">
 							<br>
 							<br>
 							<br>

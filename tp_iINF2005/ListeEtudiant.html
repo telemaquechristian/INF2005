@@ -14,11 +14,19 @@
 		<link rel="stylesheet" href="css/decorations.css">
 		<link rel="stylesheet" href="css/courriel.css">
 		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
-		<script src="js/jquery-1.11.0.min.js"></script>
-		<script src="js/listeEtudiants.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/listeEtudiants.js"></script>
+		<script src="js/acces.js"></script>
+
+		<script>
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
+		</script>
 	</head>
 
-	<body>
+	<body onload="verifier()">
 
 		<div class="bleuePale">
 
@@ -28,7 +36,7 @@
 					<a href="Accueil.html" class="accueil">Accueil</a>
 				</nav>
 				<h1>Programmation Web : INF2005</h1>
-				<a href="deconection.html" class="deco">D&eacute;connection</a>
+				<a href= "javascript:deco();" class="deco">D&eacute;connection</a>
 
 			</div>
 
@@ -71,14 +79,20 @@
 						<p class="headParagraph">
 							Charger le fichier
 						</p>
-						Sélectioner un fichier XML
+
 						<br>
 						<form id="formEtudian">
-							<input type="file" name="fichier"  id="xml" >
+							<div class = "LeftcontainList">
+								<a href="javascript:listeEtudiant1();"> Charger les Étudiants</a>
+							</div>
 							<br>
+							<div class = "LeftcontainList">
+								<a href="javascript:listeEtudiant1();"> Charger les Étudiants en retard</a>
+							</div>
+
 							<br>
 
-							<input type="submit" value="Submit" onclick="loadxml()">
+							<p id ="valide"></p>
 						</form>
 					</div>
 				</div>
@@ -89,19 +103,6 @@
 							Liste
 						</p>
 						<select name="listB" id="listB" multiple="multiple" class="listeEtudiant">
-							<option value="E">user5</option>
-							<option value="F">user6</option>
-							<option value="G">user7</option>
-							<option value="H">user8</option>
-							<option value="I">user9</option>
-							<option value="J">user10</option>
-							<option value="K">user1</option>
-							<option value="L">user2</option>
-							<option value="M">user4</option>
-							<option value="N">user11</option>
-							<option value="O">user12</option>
-							<option value="P">user13</option>
-
 
 						</select>
 					</div>

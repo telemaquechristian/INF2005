@@ -16,21 +16,28 @@
 		<link rel="stylesheet" href="css/sections.css">
 		<link rel="stylesheet" href="css/ressource.css">
 		<link rel="stylesheet" href="css/OneCenter.css">
+		<script src="js/acces.js"></script>
+		<script>
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
+		</script>
 
 	</head>
 
-	<body>
+	<body onload="verifier()">
 
 		<div class="bleuePale">
 
 			<div class ="head">
-			
+
 				<nav>
 					<a href="Accueil.html"  class="accueil">Accueil</a>
 				</nav>
 				<h1>Programmation Web : INF2005</h1>
-				<a href="deconection.html" class="deco">D&eacute;connection</a>
-				
+				<a href= "javascript:deco();" class="deco">D&eacute;connection</a>
+
 			</div>
 
 			<div class="containLeft">
@@ -47,7 +54,9 @@
 						<ul>
 
 							<li >
-								<p>Notes de cours</p>
+								<p>
+									Notes de cours
+								</p>
 								<ul>
 									<li >
 										<a href="#">S&eacute;ance 1</a>
@@ -58,18 +67,26 @@
 								</ul>
 							</li>
 							<li >
-								<p>Examens</p>
+								<p>
+									Examens
+								</p>
 								<ul>
 									<li >
-										<p>Description</p>
+										<p>
+											Description
+										</p>
 									</li>
 								</ul>
 							</li>
 							<li >
-								<p>Travaux pratiques</p>
+								<p>
+									Travaux pratiques
+								</p>
 								<ul>
 									<li >
-										<p>Description</p>
+										<p>
+											Description
+										</p>
 									</li>
 									<li >
 										<a href="#">TP1</a>
@@ -77,7 +94,7 @@
 								</ul>
 							</li>
 						</ul>
-						<a href="GestionSections.html" class="aGestionSections">G&eacute;rer les s&eacute;ctions</a>
+						<a href="GestionSections.html" class="aGestionSections" rel="noreferrer" >G&eacute;rer les s&eacute;ctions</a>
 					</div>
 				</div>
 			</div>

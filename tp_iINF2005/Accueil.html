@@ -14,21 +14,28 @@
 		<link rel="stylesheet" href="css/decorations.css">
 		<link rel="stylesheet" href="css/courriel.css">
 		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
-
+		<script src="js/acces.js"></script>
+		<script>
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
+		</script>
 	</head>
 
-	<body>
+	<body onload="verifier()">
 
 		<div class="bleuePale">
 
 			<div class ="head">
-			
+
 				<nav>
 					<a href="Accueil.html" class="accueil">Accueil</a>
 				</nav>
 				<h1>Programmation Web : INF2005</h1>
-				<a href="deconection.html" class="deco">D&eacute;connection</a>
-				
+
+				<a href="javascript:deco();" class="deco">D&eacute;connection</a>
+
 			</div>
 
 			<div class="containLeft">
@@ -53,7 +60,7 @@
 					Activit&eacute;
 					<ul>
 						<li>
-							<a href="Ressource.html" class="a">Ressources</a> 
+							<a href="Ressource.html" class="a">Ressources</a>
 						</li>
 						<li>
 							<a href="Devoir.html" class="a">Devoirs</a>
@@ -99,7 +106,7 @@
 					<a href="Sections.html" class="a">S&eacute;ctions</a>
 				</div>
 				<br>
-				
+
 			</div>
 
 			<div class="footer">

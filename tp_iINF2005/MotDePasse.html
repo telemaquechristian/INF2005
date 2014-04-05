@@ -1,93 +1,103 @@
 <!doctype html>
-<html class="no-js" lang="en"> 
-<head>
-  <meta charset="utf-8">
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
 
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>
-  	Mot De Passe
-  </title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+		<title> Mot De Passe </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  
-  <link rel="stylesheet" href="css/decorations.css">
-  <link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+		<link rel="stylesheet" href="css/decorations.css">
+		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
+		<script src="js/acces.js"></script>
 
-  
-</head>
+		<script>
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
+		</script>
+	</head>
 
-<body>
+	<body onload="verifier()">
 
-  
-  <div class="bleuePale">
-  	
-  <div class ="head">
-  	<br />
-  	<h1>Programmation Web:INF2005</h1> 	
-  </div>	
-  
-  <div class="containLeft">
-  	<br />
-  	<div class = "LeftcontainList"><ul><li>contenu1</li></ul></div>
-  	<div class = "LeftcontainList"><ul><li>contenu2</li></ul></div>
-  	<div class = "LeftcontainList"><ul><li>contenu3</li></ul></div>
-  	
-  </div>
-  
-  <div class="containCenter">
-  	
-	<div class="inscriptionEtConnection">
-		<div class="inscriptionContain">
-			<p class="headParagraph">Instruction</p>
-			L&#39;orsque votre mot de passe a &eacute;t&eacute; oubli&eacute;, un mot de passe
-			temporaire peut &#234;tre envoy&eacute; &#224; votre  courriel en remplissant 
-			la section &#34;Mot de passe oubli&eacute;&#34;. 
+		<div class="bleuePale">
+
+			<div class ="head">
+				<br />
+				<h1>Programmation Web:INF2005</h1>
+			</div>
+
+			<div class="containLeft">
+				<br />
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							contenu1
+						</li>
+					</ul>
+				</div>
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							contenu2
+						</li>
+					</ul>
+				</div>
+				<div class = "LeftcontainList">
+					<ul>
+						<li>
+							contenu3
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="containCenter">
+
+				<div class="inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							Instruction
+						</p>
+						L&#39;orsque votre mot de passe a &eacute;t&eacute; oubli&eacute;, un mot de passe
+						temporaire peut &#234;tre envoy&eacute; &#224; votre  courriel en remplissant
+						la section &#34;Mot de passe oubli&eacute;&#34;.
+					</div>
+				</div>
+
+				<div class = "inscriptionEtConnection">
+					<div class="inscriptionContain">
+						<p class="headParagraph">
+							Mot de passe oublié
+						</p>
+						<form action="authentification.html">
+							Code d&#39acc&egrave;s &eacute;tudiant
+							<br>
+							<input class="connection" type="email" name="code d&#39acc&egrave;s">
+							<br>
+							<br>
+							<input class="buttonConnection" type="submit" name="mpdOublie" value="Envoyer">
+							<br>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="containRight">
+				Contenu secondaire
+			</div>
+
+			<div class="footer">
+
+			</div>
+
 		</div>
-	</div>
-	
-	<div class = "inscriptionEtConnection">
-		<div class="inscriptionContain">
-		<p class="headParagraph">Mot de passe oublié</p>
-		<form action="authentification.html">
-			Code d&#39acc&egrave;s &eacute;tudiant <br>
-			<input class="connection" type="email" name="code d&#39acc&egrave;s"> <br><br>
-			<input class="buttonConnection" type="submit" name="mpdOublie" value="Envoyer"> <br>
-		</form>
-		</div>
-	</div>
-  	
-  </div>
-  
-  <div class="containRight">
-  	Contenu secondaire
-  </div>
-  
-  <div class="footer">
-  	
-  	
-  </div>
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  </div>
-</body>
+	</body>
 </html>

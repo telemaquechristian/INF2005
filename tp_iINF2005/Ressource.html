@@ -15,10 +15,17 @@
 		<link rel="stylesheet" href="css/courriel.css">
 		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
 		<link rel="stylesheet" href="css/ressource.css">
+		<script src="js/acces.js"></script>
+		<script>
+			window.onbeforeunload = function(event) {
+				localStorage.setItem("logIn", false);
+				localStorage.setItem("logOUT", true);
+			};
+		</script>
 
 	</head>
 
-	<body>
+	<body onload="verifier()">
 
 		<div class="bleuePale">
 
@@ -28,7 +35,7 @@
 					<a href="Accueil.html" class="accueil">Accueil</a>
 				</nav>
 				<h1>Programmation Web : INF2005</h1>
-				<a href="deconection.html" class="deco">D&eacute;connection</a>
+				<a href= "javascript:deco();" class="deco">D&eacute;connection</a>
 
 			</div>
 
