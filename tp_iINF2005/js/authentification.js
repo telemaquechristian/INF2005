@@ -74,52 +74,56 @@ function accueil() {
 	var pwd = document.connection.pwd.value;
 	var storedValue = localStorage.getItem("email");
 
-	if (localStorage.getItem("block") == "true")
-		alert("** Your next login in "+ (new Date().getMinutes() - localStorage.getItem("nextLog") )+" minute");
+ alert(localStorage.getItem("nextLog") );
+	if (localStorage.getItem("block") == "true" && ((new Date().getMinutes() - localStorage.getItem("nextLog") ) < 0))
+		alert("** Your next login in " + (new Date().getMinutes() - localStorage.getItem("nextLog") ) + " minute");
 	else {
+		
+			
+		
 		for ( i = 0; i < localStorage.length; i++) {
+			
 			if ((user == localStorage.getItem("" + i + "")) && (pwd == localStorage.getItem("" + (i + 1) + ""))) {
-				localStorage.setItem("logIn", true);
-				localStorage.setItem("logOUT", false);
+				localStorage.setItem("logIn", "true");
+				alert("logIn true  logout false");
+				localStorage.setItem("logOUT", "false");
 				window.location.href = "Accueil.html";
 
 			}
 		}
-		
+
 		if (true) {
 
-		alert("Code d'accès ou Mot de passe incorrect");
+			alert("Code d'accès ou Mot de passe incorrect");
 
-		if (localStorage.getItem("compteur") == 0)
-			localStorage.setItem("compteur", 1);
-		else if (localStorage.getItem("compteur") == 1) {
-			localStorage.setItem("compteur", 2);
-			if (localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
-				localStorage.setItem("block", true);
-				localStorage.setItem("nextLog", (new Date().getMinutes() + 10));
+			if (localStorage.getItem("compteur") == 0)
+				localStorage.setItem("compteur", 1);
+			else if (localStorage.getItem("compteur") == 1) {
+				localStorage.setItem("compteur", 2);
+				if (localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
+					localStorage.setItem("block", "true");
+					localStorage.setItem("nextLog", (new Date().getMinutes() + 10));
+				} else {
+					init();
+				}
+
 			} else {
 				init();
 			}
+			
 
-		} else {
-			init();
 		}
-		alert(localStorage.getItem("compteur"));
-		alert(localStorage.getItem("block"));
-		
-	}
-		
-	}
 
-	
+	}
 
 }
 
 function init() {
 	localStorage.setItem("compteur", 0);
-	localStorage.setItem("block", false);
+	localStorage.setItem("block", "false");
 	var m = new Date().getMinutes();
 	localStorage.setItem("blockMinute1", m);
 	localStorage.setItem("blockMinute2", m + 5);
+	localStorage.setItem("blockMinute1", 0);
 }
 

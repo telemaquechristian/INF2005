@@ -21,9 +21,18 @@
 
 		<script>
 			window.onbeforeunload = function(event) {
-				localStorage.setItem("logIn", false);
-				localStorage.setItem("logOUT", true);
+				event = event || window.event;
+				if (window.closed) {
+					event.returnValue = undefined;
+					localStorage.setItem("logIn", false);
+					localStorage.setItem("logOUT", true);
+
+				} else {
+					
+					return undefined;
+				}
 			};
+
 		</script>
 	</head>
 
