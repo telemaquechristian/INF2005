@@ -73,19 +73,21 @@ function accueil() {
 	var user = document.connection.email.value;
 	var pwd = document.connection.pwd.value;
 	var storedValue = localStorage.getItem("email");
+	var nextime = localStorage.getItem("nextLog");
+	var minutes = parseInt((new Date().getMinutes()) % 60);
+	
+	if(nextime < 10 && minutes != 0)nextime+=60;
+	
+	if (localStorage.getItem("block") == "true" && minutes < nextime ) {
 
- alert(localStorage.getItem("nextLog") );
-	if (localStorage.getItem("block") == "true" && ((new Date().getMinutes() - localStorage.getItem("nextLog") ) < 0))
-		alert("** Your next login in " + (new Date().getMinutes() - localStorage.getItem("nextLog") ) + " minute");
-	else {
-		
-			
-		
+		var acce = nextime - minutes;
+		alert("** Your next login in " + acce + " minute");
+	} else {
+
 		for ( i = 0; i < localStorage.length; i++) {
-			
+
 			if ((user == localStorage.getItem("" + i + "")) && (pwd == localStorage.getItem("" + (i + 1) + ""))) {
 				localStorage.setItem("logIn", "true");
-				alert("logIn true  logout false");
 				localStorage.setItem("logOUT", "false");
 				window.location.href = "Accueil.html";
 
@@ -96,13 +98,11 @@ function accueil() {
 
 			alert("Code d'accès ou Mot de passe incorrect");
 
-			if (localStorage.getItem("compteur") == 0)
-				localStorage.setItem("compteur", 1);
-			else if (localStorage.getItem("compteur") == 1) {
+			if (localStorage.getItem("compteur") == 1) {
 				localStorage.setItem("compteur", 2);
 				if (localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
 					localStorage.setItem("block", "true");
-					localStorage.setItem("nextLog", (new Date().getMinutes() + 10));
+					localStorage.setItem("nextLog", ((new Date().getMinutes() + 10) % 60));
 				} else {
 					init();
 				}
@@ -110,7 +110,6 @@ function accueil() {
 			} else {
 				init();
 			}
-			
 
 		}
 
@@ -119,7 +118,7 @@ function accueil() {
 }
 
 function init() {
-	localStorage.setItem("compteur", 0);
+	localStorage.setItem("compteur", 1);
 	localStorage.setItem("block", "false");
 	var m = new Date().getMinutes();
 	localStorage.setItem("blockMinute1", m);
