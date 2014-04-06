@@ -15,21 +15,7 @@
 		<link rel="stylesheet" href="css/inscriptionEtAuthentification.css">
 
 		<script src="js/authentification.js"></script>
-		<script>
-			window.onbeforeunload = function(event) {
-				event = event || window.event;
-				if (window.closed) {
-					event.returnValue = undefined;
-					localStorage.setItem("logIn", false);
-					localStorage.setItem("logOUT", true);
-
-				} else {
-					
-					return undefined;
-				}
-			};
-
-		</script>
+		
 	</head>
 
 	<body  >
