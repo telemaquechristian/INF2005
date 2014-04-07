@@ -17,26 +17,11 @@
 		<link rel="stylesheet" href="css/ressource.css">
 		<link rel="stylesheet" href="css/OneCenter.css">
 		<script src="js/acces.js"></script>
-		<script>
-			window.onbeforeunload = function(event) {
-				event = event || window.event;
-				if (window.closed) {
-					event.returnValue = undefined;
-					localStorage.setItem("logIn", false);
-					localStorage.setItem("logOUT", true);
-
-				} else {
-					localStorage.setItem("logIn", false);
-					localStorage.setItem("logOUT", true);
-					return undefined;
-				}
-			};
-
-		</script>
+		
 
 	</head>
 
-	<body onload="verifier()">
+	<body onload="verifier()" onunload = "closesession()">
 
 		<div class="bleuePale">
 

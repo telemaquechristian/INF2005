@@ -73,56 +73,70 @@ function accueil() {
 	var user = document.connection.email.value;
 	var pwd = document.connection.pwd.value;
 	var storedValue = localStorage.getItem("email");
-	var nextime = localStorage.getItem("nextLog");
+ 	afficherProchainLogIn();
+	for ( i = 0; i < localStorage.length; i++) {
+
+		if ((user == localStorage.getItem("" + i + "")) && (pwd == localStorage.getItem("" + (i + 1) + ""))) {
+			localStorage.setItem("logIn", "true");
+			localStorage.setItem("logOUT", "false");
+			window.location.href = "Accueil.html";
+
+		}
+	}
+
+	veriferTempslog();
+}
+
+function veriferTempslog() {
+
+	alert("Code d'accès ou Mot de passe incorrect");
+
+	if (localStorage.getItem("compteur") == 1) {
+		localStorage.setItem("compteur", 2);
+	} else if(localStorage.getItem("compteur") == 2){
+		localStorage.setItem("compteur", 3);
+	}else if ((localStorage.getItem("compteur") == 3) && localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
+		localStorage.setItem("block", "true");
+		var temps = parseInt( (new Date().getMinutes()));
+
+		localStorage.setItem("nextLog", ((temps + 10) % 60));
+
+	} else {
+		init();
+	}
+}
+
+function afficherProchainLogIn() {
+	var nextime = parseInt(localStorage.getItem("nextLog"));
 	var minutes = parseInt((new Date().getMinutes()) % 60);
+ 	if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 0 && minutes < 10){
+		nextime += 60;
+		minutes += 60;
+	}else if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 50 ){
+		nextime += 60;
+		;
+	}
+		
 	
-	if(nextime < 10 && minutes != 0)nextime+=60;
-	
-	if (localStorage.getItem("block") == "true" && minutes < nextime ) {
+		
+	if (localStorage.getItem("block") == "true" && minutes < nextime) {
 
 		var acce = nextime - minutes;
 		alert("** Your next login in " + acce + " minute");
-	} else {
-
-		for ( i = 0; i < localStorage.length; i++) {
-
-			if ((user == localStorage.getItem("" + i + "")) && (pwd == localStorage.getItem("" + (i + 1) + ""))) {
-				localStorage.setItem("logIn", "true");
-				localStorage.setItem("logOUT", "false");
-				window.location.href = "Accueil.html";
-
-			}
-		}
-
-		if (true) {
-
-			alert("Code d'accès ou Mot de passe incorrect");
-
-			if (localStorage.getItem("compteur") == 1) {
-				localStorage.setItem("compteur", 2);
-				if (localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
-					localStorage.setItem("block", "true");
-					localStorage.setItem("nextLog", ((new Date().getMinutes() + 10) % 60));
-				} else {
-					init();
-				}
-
-			} else {
-				init();
-			}
-
-		}
-
+		window.location.href = "Accueil.html";
 	}
 
 }
 
 function init() {
 	localStorage.setItem("compteur", 1);
-	localStorage.setItem("block", "false");
+	localStorage.setItem("block", false);
 	var m = new Date().getMinutes();
 	localStorage.setItem("blockMinute1", m);
-	localStorage.setItem("blockMinute2", m + 5);
-	localStorage.setItem("blockMinute1", 0);
+	localStorage.setItem("blockMinute2", (m + 5));
+	localStorage.setItem("nextLog", -1);
 }
 
+function delai() {
+
+}

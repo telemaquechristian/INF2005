@@ -15,20 +15,11 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<script>
-			window.onbeforeunload = function(event) {
-				event = event || window.event;
-				if (window.closed) {
-					event.returnValue = undefined;
-					localStorage.setItem("logIn", false);
+			window.onunload = function() {
+ 					localStorage.setItem("logIn", false);
 					localStorage.setItem("logOUT", true);
-
-				} else {
-					
-					return undefined;
-				}
-			};
-
-		</script>
+ 			};
+ 		</script>
 	</head>
 
 	<body>

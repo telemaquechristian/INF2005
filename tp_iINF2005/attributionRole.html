@@ -34,21 +34,11 @@
 			}
 		</script>
 		<script>
-			window.onbeforeunload = function(event) {
-				event = event || window.event;
-				if (window.closed) {
-					event.returnValue = undefined;
-					localStorage.setItem("logIn", false);
+			window.onunload = function() {
+ 					localStorage.setItem("logIn", false);
 					localStorage.setItem("logOUT", true);
-
-				} else {
-					localStorage.setItem("logIn", false);
-					localStorage.setItem("logOUT", true);
-					return undefined;
-				}
-			};
-
-		</script>
+ 			};
+ 		</script>
 	</head>
 
 	<body onload="verifier()">
