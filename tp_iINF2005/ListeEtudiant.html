@@ -17,13 +17,80 @@
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/listeEtudiants.js"></script>
 		<script src="js/acces.js"></script>
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script >
+			function ajouterEtudiant(chemin) {
 
-		<script>
-			window.onunload = function() {
- 					localStorage.setItem("logIn", false);
-					localStorage.setItem("logOUT", true);
- 			};
- 		</script>
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET", chemin, true);
+
+				xmlhttp.onreadystatechange = function() {
+
+					if (xmlhttp.readyState == 4) {
+						var xml = xmlhttp.responseXML;
+						var docsnom = xml.getElementsByTagName("nom");
+						var docsprenom = xml.getElementsByTagName("prenom");
+						var docs = xml.getElementsByTagName("email");
+						var docsmpd = xml.getElementsByTagName("motdepasse");
+						var resultat = true;
+
+						for ( i = 0; i < docs.length; i++) {
+
+							nom = docsnom[i].firstChild.nodeValue;
+							prenom = docsprenom[i].firstChild.nodeValue;
+							mail = docs[i].firstChild.nodeValue;
+							motdepasse = docsmpd[i].firstChild.nodeValue;
+
+							if (!(uniciteCourriel(mail, docs, (i + 1)))) {
+								messageErreur(mail);
+								resultat = false;
+								break;
+							}
+
+							var students = $.parseJSON($.cookie("students"));
+							alert("premier1");
+							alert("ici");
+							if (students == null) {
+
+								var students = [{
+									'nom' : nom,
+									'prenom' : prenom,
+									'email' : mail,
+									'motdepasse' : motdepasse,
+								}];
+								$.cookie("students", JSON.stringify(students));
+
+							} else {
+								var students = $.parseJSON($.cookie("students"));
+								students.push({
+									'nom' : nom,
+									'prenom' : prenom,
+									'email' : mail,
+									'motdepasse' : motdepasse,
+								});
+								$.cookie("students", JSON.stringify(students));
+							}
+						}
+					}
+
+				};
+
+				xmlhttp.send();
+
+			}
+		</script>
+		<script >
+			function listeEtudiant1() {
+
+				ajouterEtudiant("listeEtudiant.xml");
+			}
+		</script>
+		<script >
+			function listeEtudiant2() {
+				ajouterEtudiant("ListeEtudiantEnRetard.xml");
+			}
+		</script>
 	</head>
 
 	<body onload="verifier()">
@@ -87,7 +154,12 @@
 							</div>
 							<br>
 							<div class = "LeftcontainList">
-								<a href="javascript:listeEtudiant1();"> Charger les Étudiants en retard</a>
+								<a href="javascript:listeEtudiant2();"> Charger les Étudiants en retard</a>
+							</div>
+
+							<br>
+							<div class = "LeftcontainList">
+								<a href="javascript:listeEtudiant1();"> Afficher les Étudiants </a>
 							</div>
 
 							<br>

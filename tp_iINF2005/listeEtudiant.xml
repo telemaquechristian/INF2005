@@ -8,66 +8,77 @@
 <nom>Sara</nom> 
 <prenom>Salomon</prenom>
 <email>sara.salomon@courrier.uqam.ca</email>
+<motdepasse>hgj34kj4</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Telemaque</nom> 
 <prenom>Christian</prenom>
 <email>telemaque.christian@courrier.uqam.ca</email>
+<motdepasse>ywtew</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Vincent</nom> 
 <prenom>Alex</prenom>
 <email>vincent.alex@courrier.uqam.ca</email>
+<motdepasse>lkjidf</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Yapo</nom> 
 <prenom>Davide</prenom>
 <email>yapo.davide@courrier.uqam.ca</email>
+<motdepasse>874h3u</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Degraphe</nom> 
 <prenom>Stephane</prenom>
 <email>degraphe.stephane@courrier.uqam.ca</email>
+<motdepasse>nc9j9ww</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Jonathan</nom> 
 <prenom>Degraphe</prenom>
 <email>jonathan.degraphe@courrier.uqam.ca</email>
+<motdepasse>29299292</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Yves</nom> 
 <prenom>Micheal</prenom>
 <email>yves.micheal@courrier.uqam.ca</email>
+<motdepasse>9k39iuj4ij</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Sara</nom> 
 <prenom>Telemaque</prenom>
 <email>sara.telemaque@courrier.uqam.ca</email>
+<motdepasse>0o0kdi9id</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Smith</nom> 
 <prenom>Victoria</prenom>
 <email>smith.victoria@courrier.uqam.ca</email>
+<motdepasse>w9iii342h34i</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Abellard</nom> 
 <prenom>Rochel</prenom>
 <email>abellard.rochel@courrier.uqam.ca</email>
+<motdepasse>wooij4i4j</motdepasse>
 </etudiant>
 
 <etudiant>
 <nom>Telemaque</nom> 
 <prenom>Laura</prenom>
 <email>telemaque.laura@courrier.uqam.ca</email>
+<motdepasse>9ekurgiuw3ihi</motdepasse>
 </etudiant>
 
 </Etudiants>

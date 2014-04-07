@@ -5,12 +5,15 @@ function valideInscription() {
 	email = document.inscription.Email.value;
 	confirmation = document.inscription.Confirmation.value;
 	mpd = document.inscription.pwd.value;
+	
 	liste1 = "listeEtudiant.xml";
 	liste2 = "ListeEtudiantEnRetard.xml";
 
 	doublons();
 
 }
+
+
 
 function doublons() {
 
@@ -70,9 +73,11 @@ function save(mail) {
 }
 
 function accueil() {
-	var user = document.connection.email.value;
-	var pwd = document.connection.pwd.value;
+	 user = document.connection.email.value;
+	 pwd = document.connection.pwd.value;
 	var storedValue = localStorage.getItem("email");
+	connectionProf();
+	
  	afficherProchainLogIn();
 	for ( i = 0; i < localStorage.length; i++) {
 
@@ -85,6 +90,20 @@ function accueil() {
 	}
 
 	veriferTempslog();
+}
+
+function connectionProf(){
+	
+	emailProf = "professeur.professeur@courrier.uqam.ca";
+	mpdProf = "12345";
+	
+	if(emailProf == user && mpdProf == pwd){
+		localStorage.setItem("logIn", "true");
+		localStorage.setItem("logOUT", "false");
+		window.location.href = "Accueil.html";
+		
+	}
+	
 }
 
 function veriferTempslog() {
