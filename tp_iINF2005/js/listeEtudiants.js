@@ -7,7 +7,8 @@ function listeEtudiant1() {
 }
 
 function listeEtudiant2() {
-	ajouterEtudiant("ListeEtudiantEnRetard.xml");
+	var tmpf = $.parseJSON(localStorage.getItem("copy"));
+	localStorage.setItem("studentsLater", JSON.stringify(tmpf));
 }
 
 function ajouterEtudiant(chemin) {
@@ -79,6 +80,7 @@ function messageErreur(mail) {
 function afficheEtudiant() {
 
 	var tmp = $.parseJSON(localStorage.getItem("students"));
+	
 	select = document.getElementById('listB');
 	for (z in tmp) {
 		var option = document.createElement('option');
@@ -86,6 +88,15 @@ function afficheEtudiant() {
 		option.innerHTML = tmp[z].nom + " " + tmp[z].prenom;
 		select.appendChild(option);
 	}
-	//localStorage.setItem("students", "nundefined");
+
+	var alluserlater = $.parseJSON(localStorage.getItem("studentsLater"));
+
+	for (b in alluserlater) {
+		var option = document.createElement('option');
+		option.value = alluserlater[b].nom + " " + alluserlater[b].prenom;
+		option.innerHTML = alluserlater[b].nom + " " + alluserlater[b].prenom;
+		select.appendChild(option);
+
+	}
 }
 

@@ -16,8 +16,6 @@ function valideInscription() {
 function doublons() {
 
 	contain(email, liste1);
-	//containListe2(email);
-
 }
 
 function contain(mail, chemin) {
@@ -84,13 +82,18 @@ function save(mail) {
 			'email' : email,
 			'motdepasse' : confirmation,
 		});
-
+		
 		localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
-
+		copyobj();
 	}
 
 }
 
+function copyobj(){
+	var cop =  $.parseJSON(localStorage.getItem("studentsLater"));
+	localStorage.setItem("copy", JSON.stringify(cop));
+	
+}
 function accueil() {
 	user = document.connection.email.value;
 	pwd = document.connection.pwd.value;
@@ -98,6 +101,7 @@ function accueil() {
 	var alluserlater = $.parseJSON(localStorage.getItem("studentsLater"));
 
 	connectionProf();
+	connectionDemo();
 
 	for (a in alluser) {
 		if (user == alluser[a].email && pwd == alluser[a].motdepasse) {
@@ -134,6 +138,20 @@ function connectionProf() {
 
 	}
 
+}
+
+function connectionDemo(){
+	emailDemo = "demo.demo@courrier.uqam.ca";
+	mpdDemo = "12345";
+
+	if (emailDemo == user && mpdDemo == pwd) {
+		localStorage.setItem("logIn", "true");
+		localStorage.setItem("logOUT", "false");
+		window.location.href = "Accueil.html";
+
+	}
+
+	
 }
 
 function veriferTempslog() {
