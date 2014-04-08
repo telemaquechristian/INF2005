@@ -85,13 +85,13 @@
 				
 				var tmp = $.parseJSON(localStorage.getItem("students"));
 				select = document.getElementById('listB');
-				for (i = 1;i<  tmp.length;i++) {
+				for (i = 0;i<  tmp.length;i++) {
 					var option = document.createElement('option');
 					option.value = tmp[i].nom+ " " + tmp[i].prenom;
 					option.innerHTML = tmp[i].nom+ " " + tmp[i].prenom;
 					select.appendChild(option);
 				}
-
+localStorage.setItem("students", "nundefined");
 			}
 		</script>
 	</head>
