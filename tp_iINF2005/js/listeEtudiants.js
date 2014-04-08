@@ -16,6 +16,8 @@ function ajouterEtudiant(chemin) {
 	xmlhttp.open("GET", chemin, true);
 	var Students = [];
 	localStorage.setItem("students", JSON.stringify(Students));
+	var StudentsLater = [];
+	localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
 	xmlhttp.onreadystatechange = function() {
 
 		if (xmlhttp.readyState == 4) {
@@ -84,6 +86,6 @@ function afficheEtudiant() {
 		option.innerHTML = tmp[z].nom + " " + tmp[z].prenom;
 		select.appendChild(option);
 	}
-	localStorage.setItem("students", "nundefined");
+	//localStorage.setItem("students", "nundefined");
 }
 

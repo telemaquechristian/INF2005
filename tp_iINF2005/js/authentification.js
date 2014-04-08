@@ -5,7 +5,7 @@ function valideInscription() {
 	email = document.inscription.Email.value;
 	confirmation = document.inscription.Confirmation.value;
 	mpd = document.inscription.pwd.value;
-	
+
 	liste1 = "listeEtudiant.xml";
 	liste2 = "ListeEtudiantEnRetard.xml";
 
@@ -13,11 +13,10 @@ function valideInscription() {
 
 }
 
-
-
 function doublons() {
 
-	var doublons = contain(email, liste1);
+	contain(email, liste1);
+	//containListe2(email);
 
 }
 
@@ -40,7 +39,9 @@ function contain(mail, chemin) {
 				}
 
 			}
-
+			if (containListe2(mail) == true) {
+				resultat = false;
+			}
 			if (resultat) {
 				save(mail);
 			}
@@ -57,6 +58,18 @@ function messageErreur() {
 	alert("The email is already in the database!");
 }
 
+function containListe2(mail) {
+	var veri = $.parseJSON(localStorage.getItem("studentsLater"));
+
+	for (w in veri) {
+		if (mail == tmp[w].email) {
+			messageErreur();
+			return true;
+		}
+	}
+	return false;
+}
+
 function save(mail) {
 
 	if (mail != confirmation) {
@@ -64,59 +77,75 @@ function save(mail) {
 	} else {
 		alert("Inscription a été faite");
 
-		localStorage.setItem("0", email);
-		localStorage.setItem("1", mpd);
-		localStorage.setItem("2", "etudiant");
+		StudentsLater = $.parseJSON(localStorage.getItem("studentsLater"));
+		StudentsLater.push({
+			'nom' : nom,
+			'prenom' : prenom,
+			'email' : email,
+			'motdepasse' : confirmation,
+		});
+
+		localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
 
 	}
 
 }
 
 function accueil() {
-	 user = document.connection.email.value;
-	 pwd = document.connection.pwd.value;
-	var storedValue = localStorage.getItem("email");
-	connectionProf();
-	
- 	afficherProchainLogIn();
-	for ( i = 0; i < localStorage.length; i++) {
+	user = document.connection.email.value;
+	pwd = document.connection.pwd.value;
+	var alluser = $.parseJSON(localStorage.getItem("students"));
+	var alluserlater = $.parseJSON(localStorage.getItem("studentsLater"));
 
-		if ((user == localStorage.getItem("" + i + "")) && (pwd == localStorage.getItem("" + (i + 1) + ""))) {
+	connectionProf();
+
+	for (a in alluser) {
+		if (user == alluser[a].email && pwd == alluser[a].motdepasse) {
 			localStorage.setItem("logIn", "true");
 			localStorage.setItem("logOUT", "false");
-			window.location.href = "Accueil.html";
-
+			window.location.href = "AccueilEtudiant.html";
 		}
+
 	}
 
-	veriferTempslog();
+	for (b in alluserlater) {
+		if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
+			localStorage.setItem("logIn", "true");
+			localStorage.setItem("logOUT", "false");
+			window.location.href = "AccueilEtudiant.html";
+		}
+
+	}
+
+	
+	afficherProchainLogIn();
+veriferTempslog();
 }
 
-function connectionProf(){
-	
+function connectionProf() {
+
 	emailProf = "professeur.professeur@courrier.uqam.ca";
 	mpdProf = "12345";
-	
-	if(emailProf == user && mpdProf == pwd){
+
+	if (emailProf == user && mpdProf == pwd) {
 		localStorage.setItem("logIn", "true");
 		localStorage.setItem("logOUT", "false");
 		window.location.href = "Accueil.html";
-		
+
 	}
-	
+
 }
 
 function veriferTempslog() {
 
 	alert("Code d'accès ou Mot de passe incorrect");
-
 	if (localStorage.getItem("compteur") == 1) {
 		localStorage.setItem("compteur", 2);
-	} else if(localStorage.getItem("compteur") == 2){
+	} else if (localStorage.getItem("compteur") == 2) {
 		localStorage.setItem("compteur", 3);
-	}else if ((localStorage.getItem("compteur") == 3) && localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
+	} else if ((localStorage.getItem("compteur") == 3) && localStorage.getItem("blockMinute2") > new Date().getMinutes()) {
 		localStorage.setItem("block", "true");
-		var temps = parseInt( (new Date().getMinutes()));
+		var temps = parseInt((new Date().getMinutes()));
 
 		localStorage.setItem("nextLog", ((temps + 10) % 60));
 
@@ -128,34 +157,30 @@ function veriferTempslog() {
 function afficherProchainLogIn() {
 	var nextime = parseInt(localStorage.getItem("nextLog"));
 	var minutes = parseInt((new Date().getMinutes()) % 60);
- 	if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 0 && minutes < 10){
+	if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 0 && minutes < 10) {
 		nextime += 60;
 		minutes += 60;
-	}else if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 50 ){
+	} else if (nextime >= 0 && nextime < 10 && minutes != 0 && minutes > 50) {
 		nextime += 60;
-		;
+
 	}
-		
-	
-		
+
 	if (localStorage.getItem("block") == "true" && minutes < nextime) {
 
 		var acce = nextime - minutes;
 		alert("** Your next login in " + acce + " minute");
+		localStorage.setItem("compteur", 1);
 		window.location.href = "Accueil.html";
 	}
-
+	
 }
 
 function init() {
 	localStorage.setItem("compteur", 1);
-	localStorage.setItem("block", false);
+	localStorage.setItem("block", null);
 	var m = new Date().getMinutes();
 	localStorage.setItem("blockMinute1", m);
 	localStorage.setItem("blockMinute2", (m + 5));
 	localStorage.setItem("nextLog", -1);
 }
 
-function delai() {
-
-}
