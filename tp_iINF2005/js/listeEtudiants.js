@@ -1,16 +1,21 @@
 liste1 = "listeEtudiant.xml";
 liste2 = "ListeEtudiantEnRetard.xml";
 
+function listeEtudiant1() {
 
-//function listeEtudiant1() {
-//	lirefichier(liste1);
-//}
+	ajouterEtudiant("listeEtudiant.xml");
+}
 
-function lirefichier(path_document) {
+function listeEtudiant2() {
+	ajouterEtudiant("ListeEtudiantEnRetard.xml");
+}
+
+function ajouterEtudiant(chemin) {
 
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", path_document, true);
-
+	xmlhttp.open("GET", chemin, true);
+	var Students = [];
+	localStorage.setItem("students", JSON.stringify(Students));
 	xmlhttp.onreadystatechange = function() {
 
 		if (xmlhttp.readyState == 4) {
@@ -26,22 +31,24 @@ function lirefichier(path_document) {
 				prenom = docsprenom[i].firstChild.nodeValue;
 				mail = docs[i].firstChild.nodeValue;
 				motdepasse = docsmpd[i].firstChild.nodeValue;
-
 				if (!(uniciteCourriel(mail, docs, (i + 1)))) {
+
 					messageErreur(mail);
 					resultat = false;
-					break;
-				} else {
-					
 
-					ajouetEtudiant(nom, prenom, mail, motdepasse);
 				}
-			}
 
-			if (resultat) {
-				afficheEtudiant(xml);
-			}
+				Students = $.parseJSON(localStorage.getItem("students"));
+				Students.push({
+					'nom' : nom,
+					'prenom' : prenom,
+					'email' : mail,
+					'motdepasse' : motdepasse,
+				});
 
+				localStorage.setItem("students", JSON.stringify(Students));
+
+			}
 		}
 
 	};
@@ -53,11 +60,12 @@ function lirefichier(path_document) {
 function uniciteCourriel(courriel, collection, index) {
 
 	var unicite = true;
-	for ( i = index; i < collection.length; i++)
-		if (courriel == collection[i].firstChild.nodeValue) {
+	for ( j = index; j < collection.length; j++)
+		if (courriel == collection[j].firstChild.nodeValue) {
 			unicite = false;
+
 		}
-	;
+
 	return unicite;
 }
 
@@ -66,7 +74,16 @@ function messageErreur(mail) {
 	alert("*** " + mail + " n'est pas unique ***");
 }
 
+function afficheEtudiant() {
 
-
-
+	var tmp = $.parseJSON(localStorage.getItem("students"));
+	select = document.getElementById('listB');
+	for (z in tmp) {
+		var option = document.createElement('option');
+		option.value = tmp[z].nom + " " + tmp[z].prenom;
+		option.innerHTML = tmp[z].nom + " " + tmp[z].prenom;
+		select.appendChild(option);
+	}
+	localStorage.setItem("students", "nundefined");
+}
 

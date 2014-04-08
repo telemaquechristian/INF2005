@@ -20,80 +20,11 @@
 		<script src="js/jquery-1.10.2.js"></script>
 		<script src="js/jquery.cookie.js"></script>
 		<script type="text/javascript">
-			function ajouterEtudiant(chemin) {
- 
-				var xmlhttp = new XMLHttpRequest();
-				xmlhttp.open("GET", chemin, true);
-				var Students = [];
-				localStorage.setItem("students", JSON.stringify(Students));
-				xmlhttp.onreadystatechange = function() {
-
-					if (xmlhttp.readyState == 4) {
-						var xml = xmlhttp.responseXML;
-						var docsnom = xml.getElementsByTagName("nom");
-						var docsprenom = xml.getElementsByTagName("prenom");
-						var docs = xml.getElementsByTagName("email");
-						var docsmpd = xml.getElementsByTagName("motdepasse");
-						var resultat = true;
-
-						for ( i = 0; i < docs.length; i++) {
-							nom = docsnom[i].firstChild.nodeValue;
-							prenom = docsprenom[i].firstChild.nodeValue;
-							mail = docs[i].firstChild.nodeValue;
-							motdepasse = docsmpd[i].firstChild.nodeValue;
-
-							//if (!(uniciteCourriel(mail, docs, (i + 1)))) {
-							//	messageErreur(mail);
-							//	resultat = false;
-							//	break;
-							//}
-
-							Students = $.parseJSON(localStorage.getItem("students"));
-							Students.push({
-								'nom' : nom,
-								'prenom' : prenom,
-								'email' : mail,
-								'motdepasse' : motdepasse,
-							});
-
-							localStorage.setItem("students", JSON.stringify(Students));
-
-						}
-					}
-
-				};
-
-				xmlhttp.send();
-
-				
-			}
 			
-		</script>
-		<script >
-			function listeEtudiant1() {
 
-				ajouterEtudiant("listeEtudiant.xml");
-			}
 		</script>
-		<script >
-			function listeEtudiant2() {
-				ajouterEtudiant("ListeEtudiantEnRetard.xml");
-			}
-		</script>
-		<script>
-			function afficheEtudiant() {
 				
-				var tmp = $.parseJSON(localStorage.getItem("students"));
-				select = document.getElementById('listB');
-				for (i = 0;i<  tmp.length;i++) {
-					var option = document.createElement('option');
-					option.value = tmp[i].nom+ " " + tmp[i].prenom;
-					option.innerHTML = tmp[i].nom+ " " + tmp[i].prenom;
-					select.appendChild(option);
-				}
-localStorage.setItem("students", "nundefined");
-			}
-		</script>
+		
 	</head>
 
 	<body onload="verifier()">
