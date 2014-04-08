@@ -66,19 +66,7 @@ function messageErreur(mail) {
 	alert("*** " + mail + " n'est pas unique ***");
 }
 
-function afficheEtudiant(xml) {
-	var nom = xml.getElementsByTagName("nom");
-	var prenom = xml.getElementsByTagName("prenom");
 
-	select = document.getElementById('listB');
-	for (i in nom) {
-		var option = document.createElement('option');
-		option.value = nom[i].firstChild.nodeValue + " " + prenom[i].firstChild.nodeValue;
-		option.innerHTML = nom[i].firstChild.nodeValue + " " + prenom[i].firstChild.nodeValue;
-		select.appendChild(option);
-	}
-
-}
 
 
 

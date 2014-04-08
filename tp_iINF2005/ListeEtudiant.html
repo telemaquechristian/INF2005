@@ -19,12 +19,13 @@
 		<script src="js/acces.js"></script>
 		<script src="js/jquery-1.10.2.js"></script>
 		<script src="js/jquery.cookie.js"></script>
-		<script >
+		<script type="text/javascript">
 			function ajouterEtudiant(chemin) {
 
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open("GET", chemin, true);
-
+				var Students = [];
+				localStorage.setItem("students", JSON.stringify(Students));
 				xmlhttp.onreadystatechange = function() {
 
 					if (xmlhttp.readyState == 4) {
@@ -36,7 +37,6 @@
 						var resultat = true;
 
 						for ( i = 0; i < docs.length; i++) {
-
 							nom = docsnom[i].firstChild.nodeValue;
 							prenom = docsprenom[i].firstChild.nodeValue;
 							mail = docs[i].firstChild.nodeValue;
@@ -48,29 +48,16 @@
 								break;
 							}
 
-							var students = $.parseJSON($.cookie("students"));
-							alert("premier1");
-							alert("ici");
-							if (students == null) {
+							Students = $.parseJSON(localStorage.getItem("students"));
+							Students.push({
+								'nom' : nom,
+								'prenom' : prenom,
+								'email' : mail,
+								'motdepasse' : motdepasse,
+							});
 
-								var students = [{
-									'nom' : nom,
-									'prenom' : prenom,
-									'email' : mail,
-									'motdepasse' : motdepasse,
-								}];
-								$.cookie("students", JSON.stringify(students));
+							localStorage.setItem("students", JSON.stringify(Students));
 
-							} else {
-								var students = $.parseJSON($.cookie("students"));
-								students.push({
-									'nom' : nom,
-									'prenom' : prenom,
-									'email' : mail,
-									'motdepasse' : motdepasse,
-								});
-								$.cookie("students", JSON.stringify(students));
-							}
 						}
 					}
 
@@ -78,6 +65,7 @@
 
 				xmlhttp.send();
 
+				
 			}
 		</script>
 		<script >
@@ -89,6 +77,21 @@
 		<script >
 			function listeEtudiant2() {
 				ajouterEtudiant("ListeEtudiantEnRetard.xml");
+			}
+		</script>
+		<script>
+			function afficheEtudiant() {
+				var tmp = $.parseJSON($.cookie("students"));
+				alert(tmp);
+
+				select = document.getElementById('listB');
+				for (i in tmp) {
+					var option = document.createElement('option');
+					option.value = tmp[i].nom+ " " + tmp[i].prenom;
+					option.innerHTML = tmp[i].nom+ " " + tmp[i].prenom;
+					select.appendChild(option);
+				}
+
 			}
 		</script>
 	</head>
@@ -159,7 +162,7 @@
 
 							<br>
 							<div class = "LeftcontainList">
-								<a href="javascript:listeEtudiant1();"> Afficher les Étudiants </a>
+								<a href="javascript:afficheEtudiant();"> Afficher les Étudiants </a>
 							</div>
 
 							<br>
