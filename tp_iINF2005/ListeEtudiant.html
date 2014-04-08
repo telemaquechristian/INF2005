@@ -21,7 +21,7 @@
 		<script src="js/jquery.cookie.js"></script>
 		<script type="text/javascript">
 			function ajouterEtudiant(chemin) {
-
+ 
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open("GET", chemin, true);
 				var Students = [];
@@ -42,11 +42,11 @@
 							mail = docs[i].firstChild.nodeValue;
 							motdepasse = docsmpd[i].firstChild.nodeValue;
 
-							if (!(uniciteCourriel(mail, docs, (i + 1)))) {
-								messageErreur(mail);
-								resultat = false;
-								break;
-							}
+							//if (!(uniciteCourriel(mail, docs, (i + 1)))) {
+							//	messageErreur(mail);
+							//	resultat = false;
+							//	break;
+							//}
 
 							Students = $.parseJSON(localStorage.getItem("students"));
 							Students.push({
@@ -82,11 +82,10 @@
 		</script>
 		<script>
 			function afficheEtudiant() {
-				var tmp = $.parseJSON($.cookie("students"));
-				alert(tmp);
-
+				
+				var tmp = $.parseJSON(localStorage.getItem("students"));
 				select = document.getElementById('listB');
-				for (i in tmp) {
+				for (i = 1;i<  tmp.length;i++) {
 					var option = document.createElement('option');
 					option.value = tmp[i].nom+ " " + tmp[i].prenom;
 					option.innerHTML = tmp[i].nom+ " " + tmp[i].prenom;
