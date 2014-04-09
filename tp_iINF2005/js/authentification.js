@@ -113,8 +113,7 @@ function accueil() {
 	}
 
 	for (var b in alluserlater) {
-		alert(alluserlater[b].email);
-		alert(alluserlater[b].motdepasse);
+		
 		if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
 			localStorage.setItem("logIn", "true");
 			localStorage.setItem("logOUT", "false");
