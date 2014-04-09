@@ -111,7 +111,6 @@ function accueil() {
 		}
 
 	}
-
 	for (var b in alluserlater) {
 		
 		if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
