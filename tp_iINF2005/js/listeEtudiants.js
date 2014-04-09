@@ -52,6 +52,8 @@ function ajouterEtudiant(chemin) {
 				localStorage.setItem("students", JSON.stringify(Students));
 
 			}
+			var cop1 =  $.parseJSON(localStorage.getItem("students"));
+	localStorage.setItem("copy1", JSON.stringify(cop1));
 		}
 
 	};

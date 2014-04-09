@@ -7,7 +7,6 @@ function valideInscription() {
 	mpd = document.inscription.pwd.value;
 
 	liste1 = "listeEtudiant.xml";
-	liste2 = "ListeEtudiantEnRetard.xml";
 
 	doublons();
 
@@ -59,8 +58,8 @@ function messageErreur() {
 function containListe2(mail) {
 	var veri = $.parseJSON(localStorage.getItem("studentsLater"));
 
-	for (w in veri) {
-		if (mail == tmp[w].email) {
+	for (var w in veri) {
+		if (mail == veri[w].email) {
 			messageErreur();
 			return true;
 		}
@@ -80,7 +79,7 @@ function save(mail) {
 			'nom' : nom,
 			'prenom' : prenom,
 			'email' : email,
-			'motdepasse' : confirmation,
+			'motdepasse' : mpd,
 		});
 		
 		localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
@@ -92,18 +91,19 @@ function save(mail) {
 function copyobj(){
 	var cop =  $.parseJSON(localStorage.getItem("studentsLater"));
 	localStorage.setItem("copy", JSON.stringify(cop));
+	alert("fini");
 	
 }
 function accueil() {
-	user = document.connection.email.value;
-	pwd = document.connection.pwd.value;
+	var user = document.connection.email.value;
+	var pwd = document.connection.pwd.value;
 	var alluser = $.parseJSON(localStorage.getItem("students"));
 	var alluserlater = $.parseJSON(localStorage.getItem("studentsLater"));
 
-	connectionProf();
-	connectionDemo();
+	connectionProf(user,pwd);
+	connectionDemo(user,pwd);
 
-	for (a in alluser) {
+	for (var a in alluser) {
 		if (user == alluser[a].email && pwd == alluser[a].motdepasse) {
 			localStorage.setItem("logIn", "true");
 			localStorage.setItem("logOUT", "false");
@@ -112,7 +112,9 @@ function accueil() {
 
 	}
 
-	for (b in alluserlater) {
+	for (var b in alluserlater) {
+		alert(alluserlater[b].email);
+		alert(alluserlater[b].motdepasse);
 		if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
 			localStorage.setItem("logIn", "true");
 			localStorage.setItem("logOUT", "false");
@@ -126,10 +128,11 @@ function accueil() {
 veriferTempslog();
 }
 
-function connectionProf() {
+function connectionProf(user,pwd) {
 
-	emailProf = "professeur.professeur@courrier.uqam.ca";
-	mpdProf = "12345";
+	var emailProf = "professeur.professeur@courrier.uqam.ca";
+	var mpdProf = "12345";
+
 
 	if (emailProf == user && mpdProf == pwd) {
 		localStorage.setItem("logIn", "true");
@@ -140,9 +143,9 @@ function connectionProf() {
 
 }
 
-function connectionDemo(){
-	emailDemo = "demo.demo@courrier.uqam.ca";
-	mpdDemo = "12345";
+function connectionDemo(user,pwd){
+	var emailDemo = "demo.demo@courrier.uqam.ca";
+	var mpdDemo = "12345";
 
 	if (emailDemo == user && mpdDemo == pwd) {
 		localStorage.setItem("logIn", "true");
