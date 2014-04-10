@@ -63,27 +63,22 @@ function swapList(val) {
 function searchDem(el, endroit) {
 
 
-
+	
 	var e1 = $.parseJSON(localStorage.getItem(endroit));
 	for (q in e1) {
 		if (el == (e1[q].nom + " " + e1[q].prenom)) {
-
 			var tdem = localStorage.getItem("demo");
 			if (tdem != null || tdem != []) {
 				var d = $.parseJSON(tdem);
 				ad(d, e1[q]);
-				e1.splice(q);
+				e1.splice(q,1);
 				localStorage.setItem(endroit, JSON.stringify(e1));
 
 			} else {
 				localStorage.setItem("demo", JSON.stringify([]));
 				var k = $.parseJSON(localStorage.getItem("demo"));
-
 				ad(k, e1[q]);
-				alert(JSON.stringify(e1));
-				e1.splice(q);
-				alert("delete----");
-				alert(JSON.stringify(e1));
+				e1.splice(q,1);
 				localStorage.setItem(endroit, JSON.stringify(e1));
 			}
 		}
