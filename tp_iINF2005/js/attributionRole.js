@@ -36,6 +36,17 @@ function swap(listFrom, listTo) {
 	toList = document.getElementsByName(listTo)[0];
 	while (fromList.selectedIndex != -1) {
 		addOption(toList, fromList.options[fromList.selectedIndex]);
+		swapList((fromList.options[fromList.selectedIndex]).innerHTML);
+		fromList.options.remove(fromList.selectedIndex);
+	}
+}
+
+function swap1(listFrom, listTo) {
+	fromList = document.getElementsByName(listFrom)[0];
+	toList = document.getElementsByName(listTo)[0];
+	while (fromList.selectedIndex != -1) {
+		addOption(toList, fromList.options[fromList.selectedIndex]);
+		swapList1((fromList.options[fromList.selectedIndex]).innerHTML);
 		fromList.options.remove(fromList.selectedIndex);
 	}
 }
@@ -43,7 +54,6 @@ function swap(listFrom, listTo) {
 function addOption(list, option) {
 	list.options[list.options.length] = new Option(option.innerHTML, option.value);
 
-	swapList(option.innerHTML);
 }
 
 function swapList(val) {
@@ -57,6 +67,20 @@ function swapList(val) {
 
 		searchDem(val, "copy1");
 		searchDem(val, "copy");
+		
+	}
+}
+function swapList1(val) {
+	var selection = document.attri.usr;
+	var et = selection[0].checked;
+	var dem = selection[1].checked;
+
+	if (et) {
+
+	} else if (dem) {
+
+		searchDemto(val, "demo");
+			
 	}
 }
 
@@ -86,6 +110,30 @@ function searchDem(el, endroit) {
 
 }
 
+function searchDemto(el, endroit) {
+
+	var e1 = $.parseJSON(localStorage.getItem(endroit));
+	for (q in e1) {
+		if (el == (e1[q].nom + " " + e1[q].prenom)) {
+			var tdem = localStorage.getItem("copy1");
+			if (tdem != null || tdem != []) {
+				var d = $.parseJSON(tdem);
+				ad1(d, e1[q]);
+				e1.splice(q,1);
+				localStorage.setItem(endroit, JSON.stringify(e1));
+
+			} else {
+				localStorage.setItem("demo", JSON.stringify([]));
+				var k = $.parseJSON(localStorage.getItem("demo"));
+				ad1(k, e1[q]);
+				e1.splice(q,1);
+				localStorage.setItem(endroit, JSON.stringify(e1));
+			}
+		}
+	}
+
+}
+
 function ad(e1, e2) {
 
 	e1.push({
@@ -96,6 +144,19 @@ function ad(e1, e2) {
 	});
 
 	localStorage.setItem("demo", JSON.stringify(e1));
+
+}
+
+function ad1(e1, e2) {
+
+	e1.push({
+		'nom' : e2.nom,
+		'prenom' : e2.prenom,
+		'email' : e2.email,
+		'motdepasse' : e2.motdepasse,
+	});
+
+	localStorage.setItem("copy1", JSON.stringify(e1));
 
 }
 

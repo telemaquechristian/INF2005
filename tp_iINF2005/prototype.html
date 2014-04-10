@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/prototype.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#btn2").click(function() {
+					var sections = $.parseJSON(localStorage.getItem("sections"));
+					for(var i in sections){
+					$("<li>"+ sections[i].titre +"</li>").attr({
+						title : sections[i].description,
+					}).appendTo("#putain");
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<ol id="putain">
+			<li>
+				List item 1
+			</li>
+			<li>
+				List item 2
+			</li>
+			<li>
+				List item 3
+			</li>
+		</ol>
+		<form name="section1">
+			<p>Titre: <input type="text" id="Titre" name="titre" required></p>
+			<p>Description: <input type="text" id="Description" name="description"></p>
+			<input type="button" value="Charger section" id="btn1" onclick="ajouetSection()"/>
+			<input type="button" value="Afficher section" id="btn2"/>
+			</form>
+			
+		<a href="appendTest.html">reload</a>
+	</body>
+</html>
