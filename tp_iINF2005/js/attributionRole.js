@@ -9,15 +9,15 @@ function listeuser() {
 
 function showstudents() {
 	var e1 = $.parseJSON(localStorage.getItem("copy1"));
-	for (q in e1)
+	for (var q in e1)
 	fullList.options[fullList.options.length] = new Option(e1[q].nom + " " + e1[q].prenom, fullList.options.length);
 }
 
 function showsstudentsLater() {
 	var estnull = localStorage.getItem("copy");
-	if (estnull != null) {
+	if (estnull != null || estnull != []) {
 		var e2 = $.parseJSON(estnull);
-		for (r in e2)
+		for (var r in e2)
 		fullList.options[fullList.options.length] = new Option(e2[r].nom + " " + e2[r].prenom, fullList.options.length);
 	}
 }
@@ -26,7 +26,7 @@ function showdemo() {
 	var estnull = localStorage.getItem("demo");
 	if (estnull != null || estnull != []) {
 		var d = $.parseJSON(estnull);
-		for (g in d)
+		for (var g in d)
 		fullList.options[fullList.options.length] = new Option(d[g].nom + " " + d[g].prenom, fullList.options.length);
 	};
 }
@@ -42,7 +42,7 @@ function swap(listFrom, listTo) {
 
 function addOption(list, option) {
 	list.options[list.options.length] = new Option(option.innerHTML, option.value);
-	
+
 	swapList(option.innerHTML);
 }
 
@@ -62,22 +62,30 @@ function swapList(val) {
 
 function searchDem(el, endroit) {
 
-	var e1 = $.parseJSON(localStorage.getItem(endroit));
-	for (q in e1)
-	if (el == (e1[q].nom + " " + e1[q].prenom)) {
 
-		var tdem = localStorage.getItem("demo");
-		if (tdem != null || tdem != []) {
-			var d = $.parseJSON(tdem);
-			ad(d, e1[q]);
-			e1.splice(q);
-			//localStorage.setItem(endroit, JSON.stringify(e1));
-		} else {
-			localStorage.setItem("demo", JSON.stringify([]));
-			var k = $.parseJSON(localStorage.getItem("demo"));
-			ad(k, e1[q]);
-			e1.splice(q);
-			//localStorage.setItem(endroit, JSON.stringify(e1));
+
+	var e1 = $.parseJSON(localStorage.getItem(endroit));
+	for (q in e1) {
+		if (el == (e1[q].nom + " " + e1[q].prenom)) {
+
+			var tdem = localStorage.getItem("demo");
+			if (tdem != null || tdem != []) {
+				var d = $.parseJSON(tdem);
+				ad(d, e1[q]);
+				e1.splice(q);
+				localStorage.setItem(endroit, JSON.stringify(e1));
+
+			} else {
+				localStorage.setItem("demo", JSON.stringify([]));
+				var k = $.parseJSON(localStorage.getItem("demo"));
+
+				ad(k, e1[q]);
+				alert(JSON.stringify(e1));
+				e1.splice(q);
+				alert("delete----");
+				alert(JSON.stringify(e1));
+				localStorage.setItem(endroit, JSON.stringify(e1));
+			}
 		}
 	}
 
@@ -93,8 +101,7 @@ function ad(e1, e2) {
 	});
 
 	localStorage.setItem("demo", JSON.stringify(e1));
-	
-	
+
 }
 
 function showAttrib() {
@@ -102,16 +109,17 @@ function showAttrib() {
 	var dem = selection[1].checked;
 	var selList = document.getElementsByName('listA')[0];
 	if (dem) {
-		
+
 		var estnull = localStorage.getItem("demo");
 		if (estnull != null || estnull != []) {
 			var d = $.parseJSON(estnull);
 			for (g in d)
 			selList.options[selList.options.length] = new Option(d[g].nom + " " + d[g].prenom, selList.options.length);
 		};
-	}else{
-		
-		for(u in selList.options)selList.options.remove(u);
+	} else {
+
+		for (u in selList.options)
+		selList.options.remove(u);
 	}
 }
 

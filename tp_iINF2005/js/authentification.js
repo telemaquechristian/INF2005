@@ -1,5 +1,6 @@
 function valideInscription() {
-
+   
+	
 	nom = document.inscription.Nom.value;
 	prenom = document.inscription.Prenom.value;
 	email = document.inscription.Email.value;
@@ -57,7 +58,7 @@ function messageErreur() {
 
 function containListe2(mail) {
 	var veri = $.parseJSON(localStorage.getItem("studentsLater"));
-
+	if(veri == null)localStorage.setItem("studentsLater",JSON.stringify([]));
 	for (var w in veri) {
 		if (mail == veri[w].email) {
 			messageErreur();
@@ -74,7 +75,9 @@ function save(mail) {
 	} else {
 		alert("Inscription a été faite");
 
+		
 		StudentsLater = $.parseJSON(localStorage.getItem("studentsLater"));
+		
 		StudentsLater.push({
 			'nom' : nom,
 			'prenom' : prenom,
@@ -148,11 +151,6 @@ function connectionDemo(user, pwd) {
 	for (var o in demo) {
 
 		if (demo[o].email == user && demo[o].motdepasse == pwd) {
-			alert(demo[o].email);
-			alert(demo[o].motdepasse);
-			alert("--");
-			alert(user);
-			alert(pwd);
 			localStorage.setItem("logIn", "true");
 			localStorage.setItem("logOUT", "false");
 

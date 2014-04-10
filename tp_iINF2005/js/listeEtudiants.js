@@ -7,6 +7,8 @@ function listeEtudiant1() {
 }
 
 function listeEtudiant2() {
+	
+	
 	var tmpf = $.parseJSON(localStorage.getItem("copy"));
 	localStorage.setItem("studentsLater", JSON.stringify(tmpf));
 }
@@ -17,8 +19,7 @@ function ajouterEtudiant(chemin) {
 	xmlhttp.open("GET", chemin, true);
 	var Students = [];
 	localStorage.setItem("students", JSON.stringify(Students));
-	var StudentsLater = [];
-	localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
+	
 	xmlhttp.onreadystatechange = function() {
 
 		if (xmlhttp.readyState == 4) {
