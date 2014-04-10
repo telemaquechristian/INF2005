@@ -193,7 +193,7 @@ function afficherProchainLogIn() {
 
 	}
 
-	if (localStorage.getItem("block") == "true" && minutes < nextime) {
+	if (localStorage.getItem("block") == "true" && minutes < nextime && (nextime - minutes)<11 &(nextime - minutes)>0) {
 
 		var acce = nextime - minutes;
 		alert("** Your next login in " + acce + " minute");
