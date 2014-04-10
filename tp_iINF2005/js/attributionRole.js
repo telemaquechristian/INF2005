@@ -89,7 +89,7 @@ function ad(e1, e2) {
 		'nom' : e2.nom,
 		'prenom' : e2.prenom,
 		'email' : e2.email,
-		'motdepasse' : e2.confirmation,
+		'motdepasse' : e2.motdepasse,
 	});
 
 	localStorage.setItem("demo", JSON.stringify(e1));

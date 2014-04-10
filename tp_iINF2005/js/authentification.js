@@ -81,56 +81,56 @@ function save(mail) {
 			'email' : email,
 			'motdepasse' : mpd,
 		});
-		
+
 		localStorage.setItem("studentsLater", JSON.stringify(StudentsLater));
 		copyobj();
 	}
 
 }
 
-function copyobj(){
-	var cop =  $.parseJSON(localStorage.getItem("studentsLater"));
+function copyobj() {
+	var cop = $.parseJSON(localStorage.getItem("studentsLater"));
 	localStorage.setItem("copy", JSON.stringify(cop));
-	alert("fini");
-	
+
 }
+
 function accueil() {
 	var user = document.connection.email.value;
 	var pwd = document.connection.pwd.value;
 	var alluser = $.parseJSON(localStorage.getItem("students"));
 	var alluserlater = $.parseJSON(localStorage.getItem("studentsLater"));
 
-	connectionProf(user,pwd);
-	connectionDemo(user,pwd);
+	connectionProf(user, pwd);
+	var isDemo = connectionDemo(user, pwd);
 
-	for (var a in alluser) {
-		if (user == alluser[a].email && pwd == alluser[a].motdepasse) {
-			localStorage.setItem("logIn", "true");
-			localStorage.setItem("logOUT", "false");
-			window.location.href = "AccueilEtudiant.html";
+	if (!isDemo) {
+		for (var a in alluser) {
+			if (user == alluser[a].email && pwd == alluser[a].motdepasse) {
+				localStorage.setItem("logIn", "true");
+				localStorage.setItem("logOUT", "false");
+				window.location.href = "AccueilEtudiant.html";
+			}
+
 		}
+		for (var b in alluserlater) {
 
-	}
-	for (var b in alluserlater) {
-		
-		if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
-			localStorage.setItem("logIn", "true");
-			localStorage.setItem("logOUT", "false");
-			window.location.href = "AccueilEtudiant.html";
+			if (user == alluserlater[b].email && pwd == alluserlater[b].motdepasse) {
+				localStorage.setItem("logIn", "true");
+				localStorage.setItem("logOUT", "false");
+				window.location.href = "AccueilEtudiant.html";
+			}
+
 		}
-
 	}
 
-	
 	afficherProchainLogIn();
-veriferTempslog();
+	veriferTempslog();
 }
 
-function connectionProf(user,pwd) {
+function connectionProf(user, pwd) {
 
 	var emailProf = "professeur.professeur@courrier.uqam.ca";
 	var mpdProf = "12345";
-
 
 	if (emailProf == user && mpdProf == pwd) {
 		localStorage.setItem("logIn", "true");
@@ -141,18 +141,29 @@ function connectionProf(user,pwd) {
 
 }
 
-function connectionDemo(user,pwd){
-	var emailDemo = "demo.demo@courrier.uqam.ca";
-	var mpdDemo = "12345";
+function connectionDemo(user, pwd) {
 
-	if (emailDemo == user && mpdDemo == pwd) {
-		localStorage.setItem("logIn", "true");
-		localStorage.setItem("logOUT", "false");
-		window.location.href = "Accueil.html";
+	var demo = $.parseJSON(localStorage.getItem("demo"));
 
+	for (var o in demo) {
+
+		if (demo[o].email == user && demo[o].motdepasse == pwd) {
+			alert(demo[o].email);
+			alert(demo[o].motdepasse);
+			alert("--");
+			alert(user);
+			alert(pwd);
+			localStorage.setItem("logIn", "true");
+			localStorage.setItem("logOUT", "false");
+
+			window.location.href = "Accueil.html";
+			return true;
+
+		}
 	}
 
-	
+	return false;
+
 }
 
 function veriferTempslog() {
@@ -191,7 +202,7 @@ function afficherProchainLogIn() {
 		localStorage.setItem("compteur", 1);
 		window.location.href = "Accueil.html";
 	}
-	
+
 }
 
 function init() {
